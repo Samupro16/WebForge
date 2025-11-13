@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebForge – Modern weboldalak</title>
+  <meta name="description" content="Modern, reszponzív weboldalakat készítek elérhető áron.">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      margin: 0;
+      background-color: #0A0F1E;
+      color: #E5E7EB;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.95);
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    header a {
+      color: #00FF88;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header a:hover {
+      color: #1E90FF;
+    }
+
+    section {
+      padding: 90px 10% 40px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    /* Home */
+    #home {
+      background: #0A0F1E;
+      flex-wrap: wrap;
+    }
+
+    #home .text {
+      flex: 1;
+    }
+
+    #home .text h1 {
+      font-size: 2.6rem;
+      color: #00FF88;
+      margin-bottom: 10px;
+    }
+
+    #home .text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #E5E7EB;
+      max-width: 500px;
+      margin: 0;
+    }
+
+    #home img {
+      flex: 1;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    }
+
+    /* Rólam */
+    #about {
+      background: #111827;
+      flex-direction: column;
+      text-align: center;
+      padding: 60px 10% 30px 10%;
+    }
+
+    #about h2 {
+      color: #00FF88;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    #about p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Termék */
+    #product {
+      background: black;
+      flex-wrap: wrap;
+    }
+
+    #product .content {
+      flex: 1;
+    }
+
+    #product .content h2 {
+      color: #00FF88;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    #product .content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    #product img {
+      flex: 1;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
+    }
+
+    /* Kapcsolat */
+    #contact {
+      background: #111827;
+      flex-direction: column;
+      text-align: center;
+      padding: 60px 10% 30px 10%;
+    }
+
+    #contact h2 {
+      color: #00FF88;
+      margin-bottom: 10px;
+    }
+
+    #contact p {
+      font-size: 1.05rem;
+      margin: 0 0 10px 0;
+    }
+
+    #contact a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #0A0F1E;
+      color: #6B7280;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 0;
+    }
+
+    /* Reszponzív nézet */
+    @media (max-width: 900px) {
+      section {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 8% 30px 8%;
+      }
+
+      #home img,
+      #product img {
+        max-width: 280px;
+        margin-top: 15px;
+      }
+    }
+
+    b {
+      color: #00FF88;
+    }
+
+    /* === TERMÉK SZEKCIÓ === */
+    #product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 80px 10%;
+      background-color: #0A0F1E;
+      /* illik a meglévő stílusodhoz */
+      color: #E5E7EB;
+      gap: 50px;
+    }
+
+    /* Szöveges rész */
+    #product .content {
+      flex: 1 1 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #product h2 {
+      color: #00FF88;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #product p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      max-width: 700px;
+    }
+
+    /* Kép beállítása */
+    #product img {
+      flex: 1 1 400px;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    #product img:hover {
+      transform: scale(1.03);
+    }
+
+    /* === Reszponzív nézet (mobil, tablet) === */
+    @media (max-width: 900px) {
+      #product {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 8%;
+        gap: 30px;
+      }
+
+      #product .content {
+        align-items: center;
+      }
+
+      #product img {
+        max-width: 80%;
+      }
+
+      #product h2 {
+        font-size: 1.8rem;
+      }
+
+      #product p {
+        font-size: 1rem;
+      }
+    }
+
+    /* ===== CSS a csomagok szekcióhoz ===== */
+    .plans-section {
+      background: #0A0F1E;
+      /* megadott háttér */
+      color: #E5E7EB;
+      padding: 60px 10%;
+      box-sizing: border-box;
+    }
+
+    .plans-title {
+      color: #00FF88;
+      font-size: 2rem;
+      margin: 0 0 24px 0;
+      font-weight: 600;
+    }
+
+    /* plans konténer: két oszlop asztali nézetben, egymás alatt mobilon */
+    .plans {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* egy-egy csomag doboza */
+    .plan {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      /* lekerekített sarkok */
+      padding: 22px;
+      box-sizing: border-box;
+      width: calc(50% - 12px);
+      /* két doboz egymás mellett, gap miatt korrigálva */
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    /* hover effekt */
+    .plan:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 255, 136, 0.06);
+    }
+
+    /* terv név és leírás */
+    .plan-name {
+      color: #1E90FF;
+      font-size: 1.25rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .plan-desc {
+      color: #D1D5DB;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      margin: 0 0 18px 0;
+    }
+
+    /* alsó sor: ár + gomb */
+    .plan-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    /* ár kiemelése */
+    .plan-price {
+      background: rgba(0, 255, 136, 0.08);
+      color: #00FF88;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-block;
+    }
+
+    /* CTA gomb (linkként) */
+    .plan-cta {
+      background: linear-gradient(90deg, #00FF88 0%, #1E90FF 100%);
+      color: #071018;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .plan-cta:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+
+    /* mobil nézet: dobozok egymás alatt, tágasabb padding */
+    @media (max-width: 860px) {
+      .plans {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .plan {
+        width: 100%;
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      .plans-section {
+        padding: 40px 6%;
+      }
+    }
+
+    /* kisebb finomítások az olvashatósághoz */
+    @media (max-width: 420px) {
+      .plan-desc {
+        font-size: 0.95rem;
+      }
+
+      .plan-price {
+        font-size: 0.95rem;
+        padding: 6px 10px;
+      }
+
+      .plan-cta {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+      }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.95);
+      color: white;
+      padding: 10px 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      /* KÖZÉPRE IGAZÍTÁS */
+      align-items: center;
+      flex-wrap: wrap;
+      /* hogy mobilon tudjon törni */
+      gap: 20px;
+      /* kis távolság a gombok között */
+    }
+
+    header a {
+      color: #00FF88;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    header a:hover {
+      color: #1E90FF;
+    }
+
+    /* Mobil nézetre egy kis finomítás */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 0;
+      }
+    }
+
+    /* === Elérhetőségi naptár szekció === */
+    .schedule-section {
+      background: #0A0F1E;
+      color: #E5E7EB;
+      text-align: center;
+      padding: 70px 5%;
+    }
+
+    .schedule-title {
+      color: #00FF88;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .schedule-subtitle {
+      color: #9CA3AF;
+      margin-bottom: 35px;
+      font-size: 1.1rem;
+    }
+
+    /* Egysoros elrendezés */
+    .schedule-row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* Egy nap doboz */
+    .day {
+      flex: 1 1 150px;
+      min-width: 130px;
+      max-width: 180px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .day h3 {
+      color: #00FF88;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .day p {
+      font-size: 0.95rem;
+      margin: 0;
+      color: #E5E7EB;
+    }
+
+    /* Hover effekt */
+    .day:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.15);
+    }
+
+    /* Speciális stílusok */
+    .day.off {
+      opacity: 0.5;
+    }
+
+    .day.full {
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      background: rgba(0, 255, 136, 0.05);
+    }
+
+    /* Mobil nézet */
+    @media (max-width: 900px) {
+      .schedule-row {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .day {
+        flex: 1 1 45%;
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .day {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* ===== Projektek szekció ===== */
+    .projects-section {
+      background: #0A0F1E;
+      padding: 80px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Dobozok tartó */
+    .projects-row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+    }
+
+    /* Projekt doboz */
+    .project-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 20px;
+      width: 320px;
+      color: #E5E7EB;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Hover effekt */
+    .project-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 255, 136, 0.15);
+    }
+
+    /* Kép */
+    .project-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    /* Cím */
+    .project-box h3 {
+      color: #00FF88;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    /* Gomb */
+    .project-btn {
+      background: linear-gradient(90deg, #00FF88 0%, #1E90FF 100%);
+      color: #0A0F1E;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Reszponzív */
+    @media (max-width: 900px) {
+      .projects-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .project-box {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    /* ===== Kapcsolat rész ===== */
+    #contact {
+      background: #0A0F1E;
+      color: white;
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    #contact h2 {
+      color: #00FF88;
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+
+    /* ===== Form stílus ===== */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      text-align: left;
+      font-weight: 600;
+      color: #00FF88;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border: 1px solid #00FF88;
+    }
+
+    /* Gomb */
+    .contact-form button {
+      background: #00FF88;
+      color: #0A0F1E;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #1E90FF;
+      color: white;
+    }
+
+    /* ===== Reszponzív ===== */
+    @media (max-width: 600px) {
+      #contact {
+        padding: 60px 5%;
+      }
+
+      .contact-form {
+        width: 100%;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ==== Fejléc ==== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.95);
+      color: white;
+      padding: 12px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    /* Logó */
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00FF88;
+      letter-spacing: 1px;
+    }
+
+    /* Navigáció (asztali nézet) */
+    .navbar {
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar a {
+      color: #00FF88;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #1E90FF;
+    }
+
+    /* Hamburger ikon */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #00FF88;
+      user-select: none;
+    }
+
+    /* ===== Mobil nézet ===== */
+    @media (max-width: 800px) {
+
+      /* Menü rejtve mobilon */
+      .navbar {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: rgba(10, 15, 30, 0.97);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 0;
+        display: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Menü látható, ha aktív */
+      .navbar.active {
+        display: flex;
+      }
+
+      /* Hamburger ikon bekapcsol */
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* --- Fejléc fix magasság és hely a tartalomnak --- */
+    header {
+      height: 60px;
+    }
+
+    /* A tartalom ne bújjon a fejléc alá */
+    body {
+      padding-top: 60px;
+    }
+
+    /* Amikor a menü aktív, az oldal finoman lejjebb csúszik */
+    body,
+    main {
+      transition: transform 0.4s ease;
+    }
+
+    /* Menü nyitva: a háttér nem csúszik el hirtelen */
+    .navbar.active+main {
+      transform: translateY(180px);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 15px;
+    }
+    .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+  background: rgba(10, 15, 30, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+}
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #00ff88;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  outline: none;
+}
+.contact-form button {
+  background: #00ff88;
+  border: none;
+  color: #0a0f1e;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.contact-form button:hover {
+  background: #1effa3;
+}
+.contact-form {
+  max-width: 500px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: #E5E7EB;
+  font-size: 1rem;
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #6B7280;
+}
+
+.contact-form button {
+  background: linear-gradient(90deg, #00FF88, #1E90FF);
+  border: none;
+  color: #0A0F1E;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+#form-status {
+  text-align: center;
+  color: #00FF88;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">WebForge</div>
+    <nav class="navbar" id="navbar">
+      <a href="#home">Kezdőlap</a>
+      <a href="#about">Rólam</a>
+      <a href="#projects">Projektek</a>
+      <a href="#contact">Kapcsolat</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  </header>
+
+  <section id="home">
+    <div class="text">
+      <h1>Hello! WebForge vagyok, webfejlesztő!</h1>
+      <p>
+        A programozás számomra nemcsak hobbi – ez az, ahol az ötletek életre kelnek.
+        Szeretek modern, gyors és reszponzív weboldalakat készíteni, amik jól néznek ki és könnyen használhatók.
+        Mindig tanulok valami újat, és minden projektemmel egy kicsit jobban fejlődöm.
+      </p>
+    </div>
+    <img src="letöltés__3_-removebg-preview.png" alt="WebForge portré">
+  </section>
+
+  <section id="about">
+    <h2>Rólam</h2>
+    <p>
+      Már régóta foglalkozom programozással, és imádom, amit csinálok! Számomra a webfejlesztés nemcsak munka, hanem
+      igazi szenvedély – szeretek valami újat alkotni, ami másoknak is értéket ad.
+      Célom, hogy olyan weboldalakat készítsek, amelyek nemcsak szépek és letisztultak, hanem valóban segítik az
+      embereket
+      abban, hogy jobban megmutassák magukat az online térben.
+      Folyamatosan fejlesztem a tudásomat, követem az új trendeket és technológiákat, mert hiszem, hogy mindig van hová
+      fejlődni.
+    </p>
+    <div class="container">
+      <div class="box">
+        <h2>Miért én?</h2>
+        <ul>
+          <li><strong>🌟 Lelkes vagyok</strong> – imádom a webfejlesztést, és minden új projekt egy kaland számomra.
+          </li>
+          <li>🚀 <strong>Folyamatosan fejlődöm</strong> – minden munkával ügyesebb leszek, és amit megtanulok, azt
+            rögtön beépítem a következő projektembe.</li>
+          <li>💰 <strong>Elérhető áron dolgozom</strong> – kezdőként sokkal kedvezőbb, mint egy profi fejlesztő, de
+            ugyanúgy szívből csinálom.</li>
+          <li>🌟 <strong>Fontos nekem az ügyfél elégedettsége</strong> – addig csiszolom az oldalt, amíg mindketten
+            büszkék lehetünk rá.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>Mit tudok</h2>
+        <ul class="asd">
+          <li><b>✔</b> Egyszerű, letisztult weboldalak készítése</li>
+          <li><b>✔</b> Reszponzív (mobilbarát) dizájn</li>
+          <li><b>✔</b> Interaktív linkek és gombok</li>
+          <li><b>✔</b> Folyamatos fejlődés és tanulás</li>
+        </ul>
+      </div>
+    </div>
+    <section id="projects" class="projects-section">
+      <div class="projects-row">
+        <div class="project-box">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/000/641/151/original/landing-page-template-of-creative-idea-illustration-concept-modern-flat-design-concept-of-web-page-design-for-website-and-mobile-website-vector-illustration.jpg"
+            alt="Portfólió projekt">
+          <h3>Portfólió oldal</h3>
+          <a href="#" class="project-btn">Megnézem</a>
+        </div>
+
+        <div class="project-box">
+          <img
+            src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/01/abstract-website-copy.jpg?auto=format&q=60&fit=max&w=930"
+            alt="Blog projekt">
+          <h3>Blog dizájn</h3>
+          <a href="#" class="project-btn">Megnézem</a>
+        </div>
+
+
+    </section>
+
+
+  </section>
+
+  <!-- ÚJ TERMÉK SZEKCIÓ -->
+  <section id="product">
+    <div class="content">
+      <h2>A termékem</h2>
+
+      <p>
+        A <strong>WebForge dizájnok</strong> célja, hogy a technikai tudást és a kreativitást egyesítsem.
+        Olyan <strong>weboldalakat</strong> készítek, amelyek nemcsak jól mutatnak, hanem gyorsan, stabilan és
+        biztonságosan működnek.
+        Minden oldalt <strong>reszponzívan</strong> tervezek, így tökéletesen alkalmazkodnak bármilyen kijelzőhöz –
+        mobilon, tableten és számítógépen is ugyanolyan élményt nyújtanak.
+      </p>
+
+      <p>
+        A stílusom <strong>letisztult, modern és könnyen átlátható</strong>.
+        A célom, hogy a látogatók figyelmét ne a felesleges díszítések, hanem maga a tartalom ragadja meg.
+        A <strong>sötét és világos témák</strong> lehetővé teszik, hogy az oldal hangulata illeszkedjen az ügyfél
+        márkájához vagy személyiségéhez.
+      </p>
+
+      <p>
+        Fontos számomra, hogy minden projekt egyedi legyen.
+        Nem sablonokat használok, hanem <strong>egyéni megoldásokat</strong> tervezek az adott célra.
+        Mindig keresem a módját annak, hogyan tehetem az oldalt nemcsak szebbé, hanem hatékonyabbá is.
+        Egy jó weboldal nemcsak esztétikus, hanem <em>gyors, logikus és élmény használni</em>.
+      </p>
+
+      <p>
+        Ha egy <strong>modern, reszponzív és megbízható</strong> weboldalt szeretnél,
+        ami nemcsak trendi, hanem tartós is – akkor a WebForge a megfelelő választás.
+        Én nem csak weboldalakat készítek: <strong>digitális élményt építek</strong>.
+      </p>
+    </div>
+
+    </div>
+
+    </div>
+
+
+    </div>
+    <img src="https://i.pinimg.com/736x/ff/2f/92/ff2f92de276f305a8cc5462803654dab.jpg" alt="Termék képe">
+
+    <!-- ===== Weboldaltípusok szekció ===== -->
+    <section class="plans-section" aria-labelledby="plans-title">
+      <h2 id="plans-title" class="plans-title">Weboldal csomagok</h2>
+
+      <div class="plans">
+        <article class="plan">
+          <h3 class="plan-name">Bemutatkozó weboldalak</h3>
+          <p class="plan-desc">
+            Letisztult, gyors és reszponzív felület, ahol könnyedén megoszthatod gondolataid, cikkeid és történeteid.
+            Tökéletes választás, ha személyes márkát építesz vagy tartalmat szeretnél megosztani.
+          <div class="plan-bottom">
+            <span class="plan-price">20 000 Ft</span>
+            <a class="plan-cta"
+              href="https://mail.google.com/mail/u/2/#inbox?compose=GTvVlcSHvnwdpCBbRbcthFnzsnVrRxdmjGvssBZftmkFQrSGxVJksbbzCPWjhBTGfSSTbpgSJdRxG">Érdekel</a>
+          </div>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan-name">Webáruház</h3>
+          <p class="plan-desc">
+            Professzionális online bolt, egyszerű kezeléssel és modern dizájnnal.
+            Termékfeltöltés, kosár és rendelési rendszer mind egy helyen.
+            Ideális kisebb vállalkozásoknak, akik szeretnének online értékesíteni.
+          </p>
+          <div class="plan-bottom">
+            <span class="plan-price">35 000 Ft</span>
+            <a class="plan-cta"
+              href="https://mail.google.com/mail/u/2/#inbox?compose=GTvVlcSHvnwdpCBbRbcthFnzsnVrRxdmjGvssBZftmkFQrSGxVJksbbzCPWjhBTGfSSTbpgSJdRxG">Érdekel</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </section>
+
+  <section id="contact">
+    <h2>Kapcsolat</h2>
+    <section id="schedule" class="schedule-section">
+      <h2 class="schedule-title">Elérhetőségem</h2>
+      <p class="schedule-subtitle">Itt láthatod, mikor tudsz velem egyeztetni 💻</p>
+
+      <div class="schedule-row">
+        <div class="day">
+          <h3>Hétfő</h3>
+          <p>14:00 – 18:00</p>
+        </div>
+        <div class="day">
+          <h3>Kedd</h3>
+          <p>13:00 – 15:00</p>
+        </div>
+        <div class="day off">
+          <h3>Szerda</h3>
+          <p>Nem vagyok elérhető</p>
+        </div>
+        <div class="day">
+          <h3>Csütörtök</h3>
+          <p>14:00 – 19:00</p>
+        </div>
+        <div class="day">
+          <h3>Péntek</h3>
+          <p>13:30 – 16:00</p>
+        </div>
+        <div class="day full">
+          <h3>Szombat</h3>
+          <p>Egész nap</p>
+        </div>
+        <div class="day full">
+          <h3>Vasárnap</h3>
+          <p>Egész nap</p>
+        </div>
+      </div>
+    </section>
+
+    <p>Van egy ötleted? Írj bátran, örömmel segítek megvalósítani! 💡</p>
+    <p>E-mail: <a href="mailto:griezmannsamu@gmail.com">griezmannsamu@gmail.com</a></p>
+    <p>Telefonszám: <a href="tel:+36707263098">+36 70 726 3098</a></p>
+  </section>
+  <section id="contact">
+    <h2>Kapcsolatfelvétel</h2>
+ <form action="https://formspree.io/f/mblqlpqy" method="POST" class="contact-form" id="contactForm">
+  <label for="name">Név</label>
+  <input type="text" id="name" name="name" placeholder="Add meg a neved" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Add meg az email címed" required>
+
+  <label for="message">Üzenet</label>
+  <textarea id="message" name="message" rows="5" placeholder="Írd ide az üzeneted..." required></textarea>
+
+  <button type="submit">Küldés</button>
+
+  <p id="form-status"></p> <!-- ide jön a visszajelzés -->
+</form>
+
+
+
+  </section>
+
+  <footer>
+    © 2025 WebForge Webfejlesztés | Minden jog fenntartva
+  </footer>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navbar = document.getElementById('navbar');
+
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+    
+  </script>
+  <script>
+const form = document.getElementById('contactForm');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      status.textContent = "Köszönjük! Az üzeneted elküldve.";
+      status.style.color = "green";
+      form.reset();
+    } else {
+      const data = await response.json();
+      status.textContent = data.errors ? data.errors.map(err => err.message).join(", ") : "Hiba történt a küldés során.";
+      status.style.color = "red";
+    }
+  } catch (error) {
+    status.textContent = "Hiba történt a küldés során.";
+    status.style.color = "red";
+  }
+});
+</script>
+  
+
+
+
+</body>
+
+</html>
